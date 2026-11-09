@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Exercise 2</title>
+</head>
+<body>
+
+    <h1>JS Exercise 2</h1>
+
+    First Name:
+    <input type="text" id="fname">
+    <br>
+
+    Middle Name:
+    <input type="text" id="mname">
+    <br>
+
+    Last Name:
+    <input type="text" id="lname">
+    <br>
+
+    <button onclick="generateFullname()">Generate Fullname</button>
+    <button onclick="clearEntries()">Clear Entries</button>
+
+    <p>
+        Full Name:<br>
+        <b id="fullname"></b>
+    </p>
+
+    <script>
+        function generateFullname() {
+
+            let first = document.getElementById("fname").value;
+            let middle = document.getElementById("mname").value;
+            let last = document.getElementById("lname").value;
+
+            if (first.trim() === "" || middle.trim() === "" || last.trim() === "") {
+                alert("Please enter all names!");
+                return;
+            }
+
+            let fullname = first.trim() + " " +
+                           middle.trim() + " " +
+                           last.trim();
+
+            document.getElementById("fullname").innerHTML = fullname;
+        }
+
+        function clearEntries() {
+
+            document.getElementById("fname").value = "";
+            document.getElementById("mname").value = "";
+            document.getElementById("lname").value = "";
+
+            document.getElementById("fullname").innerHTML = "";
+        }
+    </script>
+
+</body>
+</html>
