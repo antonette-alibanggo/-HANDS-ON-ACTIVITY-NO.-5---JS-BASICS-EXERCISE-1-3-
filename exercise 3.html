@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Exercise 3</title>
+</head>
+<body>
+
+    <h1>JS Exercise 3</h1>
+
+    Enter a Number:
+    <input type="number" id="number">
+    <br><br>
+
+    <button onclick="insertNumber()">Insert</button>
+    <button onclick="deleteAll()">Delete All</button>
+
+    <p>Numbers:</p>
+    <div id="numbers"></div>
+
+    <p>
+        Sum: <b id="sum" style="color: blue;"></b><br>
+        Highest: <b id="highest" style="color: green;"></b><br>
+        Lowest: <b id="lowest" style="color: red;"></b>
+    </p>
+
+    <script>
+
+        let numberList = [];
+
+        function insertNumber() {
+
+            let value = document.getElementById("number").value;
+
+            if (value === "") {
+                alert("Please enter a number!");
+                return;
+            }
+
+            numberList.push(Number(value));
+
+            document.getElementById("number").value = "";
+
+            displayNumbers();
+        }
+
+        function displayNumbers() {
+
+            let output = "";
+
+            for (let i = 0; i < numberList.length; i++) {
+                output += numberList[i] + "<br>";
+            }
+
+            document.getElementById("numbers").innerHTML = output;
+
+            if (numberList.length === 0) {
+                document.getElementById("sum").innerHTML = "";
+                document.getElementById("highest").innerHTML = "";
+                document.getElementById("lowest").innerHTML = "";
+                return;
+            }
+
+            let sum = 0;
+
+            for (let i = 0; i < numberList.length; i++) {
+                sum += numberList[i];
+            }
+
+            let highest = Math.max(...numberList);
+            let lowest = Math.min(...numberList);
+
+            document.getElementById("sum").innerHTML = sum;
+            document.getElementById("highest").innerHTML = highest;
+            document.getElementById("lowest").innerHTML = lowest;
+        }
+
+        function deleteAll() {
+
+            numberList = [];
+
+            document.getElementById("number").value = "";
+
+            displayNumbers();
+        }
+
+    </script>
+
+</body>
+</html>
